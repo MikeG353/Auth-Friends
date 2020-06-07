@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 
 import LoginForm from './components/LoginForm'
-import Friends from './components/Friends'
+import FriendsList from './components/FriendsList'
 import PrivateRoute from "./components/PrivateRoute"
 import './App.css';
 
@@ -19,7 +19,7 @@ function App() {
           </li>
         </nav>
         <Switch>
-          <PrivateRoute path="/friends" component={ Friends } />
+          <PrivateRoute path="/friends" component={ FriendsList } />
           <Route path="/login" component={ LoginForm } />
           <Route component={ LoginForm } />
         </Switch>

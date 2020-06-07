@@ -1,7 +1,10 @@
 import React from 'react'
 import { axiosWithAuth } from "../utils/axiosWithAuth"
 
-class Friends extends React.Component {
+import Friend from '../components/Friend'
+import FriendForm from '../components/FriendForm'
+
+class FriendsList extends React.Component {
     state = {
         friends: []
     }
@@ -12,11 +15,11 @@ class Friends extends React.Component {
 
     getFriends = () => {
         axiosWithAuth()
-            .get("http://localhost:5000/api/data")
+            .get("http://localhost:5000/api/friends")
             .then(res => {
                 console.log(res)
                 this.setState({
-                    friends: res.data.data
+                    friends: res.data
                 })
             })
             .catch(err => {
@@ -26,8 +29,15 @@ class Friends extends React.Component {
 
     render(){
     return (
-        <></>
+        <>
+            <FriendForm />
+            {
+                this.state.friends.map(friend => {
+                    return <Friend friend={friend} key={friend.id} />
+                })
+            }
+        </>
     )}
 }
 
-export default Friends
+export default FriendsList
