@@ -31,6 +31,7 @@ class FriendForm extends React.Component {
                 this.setState({
                     friends: res.data
                 })
+                console.log(this.state)
             })
             .catch(err => {
                 console.log(err.message)
